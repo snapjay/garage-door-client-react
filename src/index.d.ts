@@ -1,16 +1,18 @@
+import {DOOR_STATUS} from "./enums"
 
 export interface IStatusResponse {
     error: string
-    status: string
+    status: DOOR_STATUS
 }
 
 export interface IStatusState {
-    status: string
+    status: DOOR_STATUS
 }
 
-export enum DOOR_STATUS {
-    TRANSITION = 'transition',
-    OPEN = 'open',
-    CLOSED = 'closed'
+export interface ISocketResponse {
+    status: DOOR_STATUS
 }
 
+export interface IStatusCallback {
+    (err:null, status: ISocketResponse) :void
+}
