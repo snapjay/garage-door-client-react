@@ -1,4 +1,4 @@
-import {DOOR_STATUS} from "./enums"
+import {ALERT, DOOR_STATUS} from "./enums"
 
 export interface IStatusResponse {
     error: string
@@ -9,10 +9,22 @@ export interface IStatusState {
     status: DOOR_STATUS
 }
 
-export interface ISocketResponse {
+export interface IAlertState {
+    alerts: ALERT[]
+}
+
+export interface ISocketStatusResponse {
     status: DOOR_STATUS
 }
 
+export interface ISocketAlertResponse {
+    status: ALERT
+}
+
 export interface IStatusCallback {
-    (err:null, status: ISocketResponse) :void
+    (err:null, rsp: ISocketStatusResponse) :void
+}
+
+export interface IAlertCallback {
+    (err:null, rsp: ISocketAlertResponse) :void
 }

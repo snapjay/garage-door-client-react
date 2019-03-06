@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
-import {ISocketResponse, IStatusResponse, IStatusState} from "../index"
+import {ISocketStatusResponse, IStatusResponse, IStatusState} from "../index"
 import {DOOR_STATUS} from "../enums"
 import {capitalizeFirstLetter} from "../Services/Utils"
 
@@ -20,7 +20,7 @@ class Status extends React.Component<{}, State> {
             this.setState({status: rsp.status})
         })
 
-        this.api.subscribeToStatus((err, rsp: ISocketResponse) => this.setState({
+        this.api.subscribeToStatus((err, rsp: ISocketStatusResponse) => this.setState({
             status : rsp.status
         }))
     }

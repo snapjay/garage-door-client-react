@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, Button, Card} from 'react-bootstrap';
 import Status from './Components/Status'
+import Alert from './Components/Alert'
 
 class App extends Component {
     render() {
@@ -16,6 +17,9 @@ class App extends Component {
                 <Row>
                     <Col>
                         <Status></Status>
+                    </Col>
+                    <Col>
+                        <Alert></Alert>
                     </Col>
                 </Row></Container>
         );

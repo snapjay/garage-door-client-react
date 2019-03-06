@@ -1,9 +1,14 @@
-import {ISocketResponse, IStatusCallback, IStatusResponse} from "../index"
+import {
+    IAlertCallback,
+    ISocketAlertResponse,
+    ISocketStatusResponse,
+    IStatusCallback,
+    IStatusResponse,
+} from "../index"
 import io  from 'socket.io-client'
-import {DOOR_STATUS} from "../enums"
+import {DOOR_STATUS, SOCKET_ALERT, SOCKET_STATUS} from "../enums"
 
 class API {
-
     readonly url: string = 'https://api.door.snapjay.com/'
     readonly socket = io(this.url)
 
@@ -16,9 +21,13 @@ class API {
     }
 
     public subscribeToStatus(cb: IStatusCallback) {
-        console.log('SUB')
-        this.socket.on('statusChange', (rsp: ISocketResponse) => {
-            console.log('chnage', rsp)
+        this.socket.on(SOCKET_STATUS, (rsp: ISocketStatusResponse) => {
+            cb(null, rsp)
+        })
+    }
+
+    public subscribeToAlert(cb: IAlertCallback) {
+        this.socket.on(SOCKET_ALERT, (rsp: ISocketAlertResponse) => {
             cb(null, rsp)
         })
     }
