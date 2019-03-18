@@ -9,8 +9,17 @@ export interface IStatusState {
     status: DOOR_STATUS
 }
 
+export interface IAlertItem {
+    alert: ALERT,
+    date: number
+}
+
+export interface IAlertResponse {
+    [id: string]: IAlertItem
+}
+
 export interface IAlertState {
-    alerts: ALERT[]
+    alerts: IAlertResponse
 }
 
 export interface ISocketStatusResponse {

@@ -3,9 +3,9 @@ export const SOCKET_ALERT = 'alert'
 
 export const ALERT_DEFS = {
     NIGHT_WATCH: {title: 'Night Watch', icon: 'hotel'},
-    DOOR_TRANSITION: {title: 'Door Stuck in Transition', icon: 'priority_high'},
-    DOOR_OPEN: {title: 'Door Has been Left Open', icon: 'lock_open'},
-    HOME_ALONE: {title: 'Door Activated when no ones home', icon: 'accessibility'}
+    DOOR_TRANSITION: {title: 'Stuck in Transition', icon: 'priority_high'},
+    DOOR_OPEN: {title: 'Door Left Open', icon: 'lock_open'},
+    HOME_ALONE: {title: 'Activated when no ones home', icon: 'accessibility'}
 }
 
 export const STATUS_DEFS = {
