@@ -7,6 +7,7 @@ import {ALERT_DEFS, STATUS_DEFS, DOOR_STATUS} from "../enums"
 const initialState: IStatusState = {
     status: DOOR_STATUS.UNKNOWN
 }
+
 type State = Readonly<typeof initialState>
 
 class Status extends React.Component<{}, State> {
