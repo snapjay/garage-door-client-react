@@ -20,6 +20,15 @@ class API {
         return this.request<IStatusResponse>('api/action')
     }
 
+
+    public lights(status: boolean) {
+        if (status) {
+            return this.request<IStatusResponse>('api/hue?state=on')
+        } else {
+            return this.request<IStatusResponse>('api/hue?state=off')
+        }
+    }
+
     public subscribeToStatus(cb: IStatusCallback) {
         this.socket.on(SOCKET_STATUS, (rsp: ISocketStatusResponse) => {
             cb(null, rsp)

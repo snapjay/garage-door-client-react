@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Row, Col, Button, Card} from 'react-bootstrap';
 import Status from './Components/Status'
 import Alert from './Components/Alert'
+import Lights from './Components/Lights'
 
 class App extends Component {
     render() {
@@ -20,6 +21,9 @@ class App extends Component {
                     </Col>
                     <Col>
                         <Alert></Alert>
+                    </Col>
+                    <Col>
+                        <Lights></Lights>
                     </Col>
                 </Row></Container>
         );

@@ -1,8 +1,8 @@
 import React from 'react'
 import {Card, ListGroup} from 'react-bootstrap'
 import API from '../Services/API'
-import {ISocketAlertResponse, IAlertState,} from "../index"
-import {ALERT, ALERT_DEFS} from "../enums"
+import {ISocketAlertResponse, IAlertState,} from '../index'
+import {ALERT, ALERT_DEFS} from '../enums'
 
 const initialState: IAlertState = {
     alerts: []
