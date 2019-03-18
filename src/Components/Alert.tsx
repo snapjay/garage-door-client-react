@@ -25,23 +25,30 @@ class Alert extends React.Component<{}, State> {
         })
     }
 
-    private listItem = (item: ALERT, index:number) => {
+    private listItem = (item: ALERT, index: number) => {
         return (
             <ListGroup.Item key={index}>
-                <i className="material-icons mr-3"> {ALERT_DEFS[item].icon} {  }</i>
+                <i className="material-icons mr-3"> {ALERT_DEFS[item].icon} {}</i>
                 {ALERT_DEFS[item].title}
             </ListGroup.Item>
         )
     }
 
     public render() {
+        let showNoAlerts
+        if (!this.state.alerts.length) {
+            showNoAlerts = <div> No alerts </div>
+        }
+
         return (
             <Card>
                 <Card.Body>
                     <Card.Title>Alerts</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
+                        {showNoAlerts}
                         <ListGroup>
                             {this.state.alerts.map((item, index) => this.listItem(item, index))}
+
                         </ListGroup>
                     </Card.Subtitle>
                 </Card.Body>
