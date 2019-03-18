@@ -8,13 +8,13 @@ class App extends Component {
     render() {
         return (
 
-            <div>
+            <div  style={{minWidth: '300px'}}>
                 <Navbar bg="primary" variant="dark" expand={true}>
                     <Navbar.Brand>
                         {'Garage Door'}
                     </Navbar.Brand>
                 </Navbar>
-                <Container fluid={true}>
+                <Container fluid={true} >
                     <Row>
                         <Col>
                             <header>

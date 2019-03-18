@@ -41,14 +41,13 @@ class Alert extends React.Component<{}, State> {
         }
 
         return (
-            <Card>
+            <Card className='CardAlert'>
                 <Card.Body>
                     <Card.Title>Alerts</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
                         {showNoAlerts}
                         <ListGroup>
                             {this.state.alerts.map((item, index) => this.listItem(item, index))}
-
                         </ListGroup>
                     </Card.Subtitle>
                 </Card.Body>

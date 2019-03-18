@@ -6,3 +6,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.CardStatus {
+  min-width: 300px;
+  display: grid;
+  grid-template-columns: 80px auto;
+  grid-column-gap: 3px;
+  grid-row-gap: 0;
+  justify-items: stretch;
+  align-items: center;
+}
+
+.CardAlert {
+  min-width: 300px;
+}
+.CardLights {
+  min-width: 200px;
+}

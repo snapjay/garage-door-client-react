@@ -20,14 +20,14 @@ class Lights extends React.Component<{}, State> {
     public render() {
 
         return (
-            <Card>
+            <Card className='CardLights'>
                 <Card.Body>
                     <Card.Title>Lights</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
                         3 Lights
                     </Card.Subtitle>
-                    <Button className='mr-2' variant="outline-primary" onClick={this.lightsOn}>On</Button>
-                    <Button variant="outline-primary" onClick={this.lightsOff}>Off</Button>
+                    <Button className='mr-2' variant="outline-secondary" onClick={this.lightsOn}>On</Button>
+                    <Button variant="outline-secondary" onClick={this.lightsOff}>Off</Button>
                 </Card.Body>
             </Card>
         )

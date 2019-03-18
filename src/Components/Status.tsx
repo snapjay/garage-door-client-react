@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
 import {ISocketStatusResponse, IStatusResponse, IStatusState} from "../index"
-import {DOOR_STATUS} from "../enums"
-import {capitalizeFirstLetter} from "../Services/Utils"
+import {ALERT_DEFS, STATUS_DEFS, DOOR_STATUS} from "../enums"
 
 const initialState: IStatusState = {
     status: DOOR_STATUS.UNKNOWN
@@ -21,7 +20,7 @@ class Status extends React.Component<{}, State> {
         })
 
         this.api.subscribeToStatus((err, rsp: ISocketStatusResponse) => this.setState({
-            status : rsp.status
+            status: rsp.status
         }))
     }
 
@@ -31,12 +30,17 @@ class Status extends React.Component<{}, State> {
 
     public render() {
         return (
-            <Card>
-                <Card.Body>
-                    <Card.Subtitle className="mb-2 text-muted">Status </Card.Subtitle>
-                      <div className='h1'>{capitalizeFirstLetter(this.state.status)}</div>
-                    <Button variant="primary"  className='mt-3' onClick={this.activate}>Activate</Button>
-                </Card.Body>
+            <Card className='CardStatus'>
+                    <div>
+                        <i className="card-img material-icons text-primary pl-3" style={{fontSize: '57px'}}> { STATUS_DEFS[this.state.status].icon} </i>
+                    </div>
+                    <div>
+                        <Card.Body>
+                            <Card.Subtitle className="mb-2 text-muted">Status:</Card.Subtitle>
+                            <div className='h1  text-primary'>{ STATUS_DEFS[this.state.status].title}</div>
+                            <Button variant="outline-secondary" className='mt-3' onClick={this.activate}>Activate</Button>
+                        </Card.Body>
+                    </div>
             </Card>
         )
     }

@@ -8,6 +8,15 @@ export const ALERT_DEFS = {
     HOME_ALONE: {title: 'Door Activated when no ones home', icon: 'accessibility'}
 }
 
+export const STATUS_DEFS = {
+    transition: {title: 'Transition', icon: 'thumbs_up_down'},
+    open: {title: 'Open', icon: 'thumb_up'},
+    closed: {title: 'Closed', icon: 'thumb_down'},
+    unknown: {title: 'Unknown', icon: 'device_unknown'}
+}
+
+
+
 export enum DOOR_STATUS {
     TRANSITION = 'transition',
     OPEN = 'open',
