@@ -33,10 +33,9 @@ class Status extends React.Component<{}, State> {
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title>Garage Door Status</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted"> Status:
-                        {capitalizeFirstLetter(this.state.status)} </Card.Subtitle>
-                    <Button variant="primary" onClick={this.activate}>Activate</Button>
+                    <Card.Subtitle className="mb-2 text-muted">Status </Card.Subtitle>
+                      <div className='h1'>{capitalizeFirstLetter(this.state.status)}</div>
+                    <Button variant="primary"  className='mt-3' onClick={this.activate}>Activate</Button>
                 </Card.Body>
             </Card>
         )
