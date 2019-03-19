@@ -1,4 +1,4 @@
-import {ALERT, DOOR_STATUS} from "./enums"
+import {ALERT, DOOR_STATUS, LOG_TYPES} from "./enums"
 
 export interface IStatusResponse {
     error: string
@@ -13,6 +13,11 @@ export interface IAlertItem {
     alert: ALERT,
     date: number
 }
+export interface ILogItem {
+    type: LOG_TYPES,
+    value: boolean | DOOR_STATUS | ALERT,
+    date: number
+}
 
 export interface IAlertResponse {
     [id: string]: IAlertItem
@@ -20,6 +25,9 @@ export interface IAlertResponse {
 
 export interface IAlertState {
     alerts: IAlertItem[]
+}
+export interface ILogState {
+    logs: ILogItem[]
 }
 
 export interface ISocketStatusResponse {
