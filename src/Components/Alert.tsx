@@ -32,10 +32,13 @@ class Alert extends React.Component<{}, State> {
 
     private listItem = (item: IAlertItem, index: number) => {
         return (
-            <ListGroup.Item key={index}>
-                <i className="material-icons mr-3 text-primary"> {ALERT_DEFS[item.alert].icon} {}</i>
-                {ALERT_DEFS[item.alert].title}
-               <div><small>{dateFormat(new Date(item.date))}</small></div>
+            <ListGroup.Item key={index} className='item'>
+                <div>
+                    <i className="material-icons mr-3 text-primary"> {ALERT_DEFS[item.alert].icon} {}</i>
+                </div>
+               <div>
+                   <div>{ALERT_DEFS[item.alert].title}</div>
+                   <small>{dateFormat(new Date(item.date))}</small></div>
             </ListGroup.Item>
         )
     }
