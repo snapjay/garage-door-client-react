@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
 import {ISocketStatusResponse, IStatusResponse, IStatusState} from "../index"
-import {ALERT_DEFS, STATUS_DEFS, DOOR_STATUS} from "../enums"
+import {STATUS_DEFS, DOOR_STATUS} from "../enums"
 
 const initialState: IStatusState = {
     status: DOOR_STATUS.UNKNOWN

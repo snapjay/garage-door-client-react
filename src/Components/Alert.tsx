@@ -1,8 +1,7 @@
 import React from 'react'
 import {Card, ListGroup} from 'react-bootstrap'
-import API from '../Services/API'
-import {ISocketAlertResponse, IAlertState, IAlertItem, IAlertResponse,} from '../index'
-import {ALERT, ALERT_DEFS, DOOR_STATUS} from '../enums'
+import {IAlertState, IAlertItem,} from '../index'
+import {ALERT_DEFS} from '../enums'
 import Firebase from '../Services/Firebase.js'
 import {dateFormat} from "../Services/Utils"
 
@@ -12,17 +11,9 @@ const initialState: IAlertState = {
 type State = Readonly<typeof initialState>
 
 class Alert extends React.Component<{}, State> {
-
-    readonly api = new API()
     public state: State = initialState
 
     componentDidMount() {
-        // Firebase.getAlertsRef().once('value').then((rsp) => {
-        //     this.setState({
-        //         alerts: rsp.val()
-        //     })
-        // })
-
         Firebase.onAlertUpdate((snapshot: IAlertItem[]) => {
             this.setState({
                 alerts: snapshot
