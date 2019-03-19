@@ -7,7 +7,7 @@ import Firebase from '../Services/Firebase.js'
 import {dateFormat} from "../Services/Utils"
 
 const initialState: IAlertState = {
-    alerts: {}
+    alerts: []
 }
 type State = Readonly<typeof initialState>
 
@@ -17,20 +17,17 @@ class Alert extends React.Component<{}, State> {
     public state: State = initialState
 
     componentDidMount() {
-        Firebase.getAlertsRef().once('value').then((rsp) => {
-            this.setState({
-                alerts: rsp.val()
-            })
-        })
-
-        // this.api.subscribeToAlert((err, rsp: ISocketAlertResponse) => {
-        //     this.setState((state) => {
-        //         state.alerts.unshift(rsp.status)
-        //         return {
-        //             alerts: state.alerts
-        //         }
+        // Firebase.getAlertsRef().once('value').then((rsp) => {
+        //     this.setState({
+        //         alerts: rsp.val()
         //     })
         // })
+
+        Firebase.onAlertUpdate((snapshot: IAlertItem[]) => {
+            this.setState({
+                alerts: snapshot
+            })
+        })
     }
 
     private listItem = (item: IAlertItem, index: number) => {
@@ -55,8 +52,8 @@ class Alert extends React.Component<{}, State> {
                         {showNoAlerts}
                         <ListGroup>
                             {
-                                Object.keys(this.state.alerts).map((key, index) => {
-                                    return this.listItem(this.state.alerts[key], index)
+                                this.state.alerts.map((item, index) => {
+                                    return this.listItem(item, index)
                                 })
                             }
                         </ListGroup>

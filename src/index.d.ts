@@ -19,7 +19,7 @@ export interface IAlertResponse {
 }
 
 export interface IAlertState {
-    alerts: IAlertResponse
+    alerts: IAlertItem[]
 }
 
 export interface ISocketStatusResponse {
