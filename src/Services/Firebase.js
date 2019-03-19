@@ -1,6 +1,5 @@
 import firebase from 'firebase'
 
-// firebase.database().ref('alerts').once('value').then((n)=> console.log(n))
 class Firebase {
 
   constructor() {
