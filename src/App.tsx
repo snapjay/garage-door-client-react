@@ -28,13 +28,13 @@ class App extends Component {
                             <Status></Status>
                         </Col>
                         <Col className='mb-4'>
+                            <Logs></Logs>
+                        </Col>
+                        <Col className='mb-4'>
                             <Alert></Alert>
                         </Col>
                         <Col className='mb-4'>
                             <Lights></Lights>
-                        </Col>
-                        <Col className='mb-4'>
-                            <Logs></Logs>
                         </Col>
                     </Row>
                 </Container>

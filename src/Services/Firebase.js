@@ -35,14 +35,21 @@ class Firebase {
       callback(build)
     })
   }
-  onLogUpdate(callback, count = 50) {
-    this.Logs.limitToLast(count).on('value', (snapshot) => {
+
+  onLogUpdate(callback, filter = 'ALL', count = 50) {
+    // eslint-disable-next-line
+    let resource = this.Logs.limitToLast(count)
+    if (filter !== 'ALL') {
+      resource = resource.orderByChild("type").equalTo(filter)
+    }
+    resource = resource.on('value', (snapshot) => {
       let build = []
       let rsp = snapshot.val()
       Object.keys(rsp).map((key, index) => build.unshift(rsp[key])
       )
       callback(build)
     })
+
   }
 }
 

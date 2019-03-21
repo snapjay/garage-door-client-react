@@ -17,16 +17,18 @@ export const STATUS_DEFS = {
 
 export const LOG_DEFS = {
     STATUS_CHANGE : {title: 'Status Change', icon: 'transfer_within_a_station'},
-    ACTION: {title: 'Action', icon: 'directions_run'},
+    ACTION: {title: 'Actions', icon: 'directions_run'},
     LIGHTS: {title: 'Lights', icon: 'brightness_low'},
-    ALERT: {title: 'Alert', icon: 'notification_important'}
+    ALERT: {title: 'Alerts', icon: 'notification_important'},
+    ALL: {title: 'All', icon: 'notification_important'}
 }
 
 export enum LOG_TYPES {
-    STATUS_CHANGE = 'STATUS_CHANGE',
+    ALL = 'ALL',
     ACTION = 'ACTION',
+    ALERT = 'ALERT',
     LIGHTS = 'LIGHTS',
-    ALERT = 'ALERT'
+    STATUS_CHANGE = 'STATUS_CHANGE'
 }
 
 export enum DOOR_STATUS {

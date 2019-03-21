@@ -28,6 +28,7 @@ export interface IAlertState {
 }
 export interface ILogState {
     logs: ILogItem[]
+    filter: LOG_TYPES
 }
 
 export interface ISocketStatusResponse {
