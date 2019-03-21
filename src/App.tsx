@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Container, Row, Col, Navbar} from 'react-bootstrap'
 import Status from './Components/Status'
-import Alert from './Components/Alert'
 import Lights from './Components/Lights'
 import Logs from './Components/Logs'
 
@@ -29,9 +28,6 @@ class App extends Component {
                         </Col>
                         <Col className='mb-4'>
                             <Logs></Logs>
-                        </Col>
-                        <Col className='mb-4'>
-                            <Alert></Alert>
                         </Col>
                         <Col className='mb-4'>
                             <Lights></Lights>

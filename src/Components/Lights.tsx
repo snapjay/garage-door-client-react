@@ -27,7 +27,7 @@ class Lights extends React.Component<{}, State> {
                 <div>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">Lights:</Card.Subtitle>
-                        <div className='h1  text-primary'>3 Lights</div>
+                        <div className='h1 text-primary'>3 Lights</div>
                         <Button className='mr-2' variant="outline-secondary" onClick={this.lightsOn}>On</Button>
                         <Button variant="outline-secondary" onClick={this.lightsOff}>Off</Button>
                     </Card.Body>

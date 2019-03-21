@@ -15,7 +15,7 @@ export interface IAlertItem {
 }
 export interface ILogItem {
     type: LOG_TYPES,
-    value: boolean | DOOR_STATUS | ALERT,
+    value: string | DOOR_STATUS | ALERT,
     date: number
 }
 

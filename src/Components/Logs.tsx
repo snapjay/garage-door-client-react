@@ -1,9 +1,9 @@
 import React, {FormEvent, SyntheticEvent} from 'react'
 import {Card, Dropdown, DropdownButton, ListGroup} from 'react-bootstrap'
-import {ILogState, ILogItem,} from '../index'
+import {ILogState, ILogItem} from '../index'
 import {LOG_DEFS, LOG_TYPES} from '../enums'
 import Firebase from '../Services/Firebase.js'
-import {dateFormat} from "../Services/Utils"
+import LogItem from "./LogItem"
 
 const initialState: ILogState = {
     logs: [],
@@ -27,23 +27,6 @@ class Logs extends React.Component<{}, State> {
         }, filter)
     }
 
-    private listItem = (item: ILogItem, index: number) => {
-        return (
-            <ListGroup.Item key={index} className='item'>
-                <div>
-                    <i className="material-icons mr-3 text-primary"> {LOG_DEFS[item.type].icon} {}</i>
-                </div>
-                <div>
-                    {LOG_DEFS[item.type].title}
-                    <div>
-                        <small>{item.value}</small>
-                    </div>
-                    <small>{dateFormat(new Date(item.date))}</small>
-                </div>
-            </ListGroup.Item>
-        )
-    }
-
     private handleChange = (eventKey:LOG_TYPES): void => {
         this.setState({filter: eventKey})
         this.updateLogs(eventKey)
@@ -62,16 +45,12 @@ class Logs extends React.Component<{}, State> {
                             Object.keys(LOG_TYPES).map(type => (
                                 <Dropdown.Item eventKey={type} key={type}>{LOG_DEFS[type].title}</Dropdown.Item>))
                         }
-
                     </DropdownButton>
-
                     <Card.Subtitle className="mb-2 text-muted">
                         {showNoAlerts}
                         <ListGroup>
                             {
-                                this.state.logs.map((item, index) => {
-                                    return this.listItem(item, index)
-                                })
+                                this.state.logs.map((item, index) => <LogItem item={item } key={index}></LogItem>)
                             }
                         </ListGroup>
                     </Card.Subtitle>

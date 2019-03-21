@@ -17,10 +17,17 @@ export const STATUS_DEFS = {
 
 export const LOG_DEFS = {
     STATUS_CHANGE : {title: 'Status Change', icon: 'transfer_within_a_station'},
-    ACTION: {title: 'Actions', icon: 'directions_run'},
+    ACTION: {title: 'Action', icon: 'directions_run'},
     LIGHTS: {title: 'Lights', icon: 'brightness_low'},
-    ALERT: {title: 'Alerts', icon: 'notification_important'},
+    ALERT: {title: 'Alert', icon: 'notification_important'},
     ALL: {title: 'All', icon: 'notification_important'}
+}
+
+export const LIGHTS_DEFS = {
+    ON: {title: 'On', icon: 'brightness_low'},
+    OFF: {title: 'Off', icon: 'brightness_high'},
+    on: {title: 'On', icon: 'brightness_low'},
+    off: {title: 'Off', icon: 'brightness_high'}
 }
 
 export enum LOG_TYPES {
