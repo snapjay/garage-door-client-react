@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
 import {ISocketStatusResponse, IStatusResponse, IStatusState} from "../index"
-import {STATUS_DEFS, DOOR_STATUS} from "../enums"
+import {STATUS_DEFS, DOOR_STATUS, LOG_DEFS} from "../enums"
+import Icon from "./Icon"
 
 const initialState: IStatusState = {
     status: DOOR_STATUS.UNKNOWN
@@ -33,7 +34,7 @@ class Status extends React.Component<{}, State> {
         return (
             <Card className='CardStatus'>
                     <div>
-                        <i className="card-img material-icons text-primary pl-3" style={{fontSize: '57px'}}> { STATUS_DEFS[this.state.status].icon} </i>
+                        <Icon className='card-img material-icons text-primary pl-3' name={STATUS_DEFS[this.state.status].icon} />
                     </div>
                     <div>
                         <Card.Body>

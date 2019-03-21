@@ -3,6 +3,8 @@ import {ListGroup} from 'react-bootstrap'
 import {ILogItem} from "../index"
 import {dateFormat} from "../Services/Utils"
 import {ALERT_DEFS, LIGHTS_DEFS, LOG_DEFS, LOG_TYPES, STATUS_DEFS} from "../enums"
+import Icon from "./Icon"
+
 
 type Props = {
     item: ILogItem
@@ -30,10 +32,10 @@ class LogItem extends React.Component<Props> {
         return (
             <ListGroup.Item className='item'>
                 <div>
-                    <i className="material-icons mr-3 text-primary "> {this.getIcon(this.props.item).icon}</i>
+                    <Icon className='mr-3 text-primary' name={this.getIcon(this.props.item).icon} />
                 </div>
                 <div>
-                    <i className="material-icons mr-3 text-primary logicon"> {LOG_DEFS[this.props.item.type].icon}</i>
+                    <Icon className='mr-3 text-primary logicon' name={LOG_DEFS[this.props.item.type].icon} />
                     <div className='text-primary'>{this.getIcon(this.props.item).title}</div>
                     <small className='d-block'>{LOG_DEFS[this.props.item.type].title}</small>
                     <small>{dateFormat(new Date(this.props.item.date))}</small>

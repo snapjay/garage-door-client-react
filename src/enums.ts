@@ -2,32 +2,32 @@ export const SOCKET_STATUS = 'statusChange'
 export const SOCKET_ALERT = 'alert'
 
 export const ALERT_DEFS = {
-    NIGHT_WATCH: {title: 'Night Watch', icon: 'hotel'},
-    DOOR_TRANSITION: {title: 'Stuck in Transition', icon: 'priority_high'},
-    DOOR_OPEN: {title: 'Door Left Open', icon: 'lock_open'},
-    HOME_ALONE: {title: 'Activated when no ones home', icon: 'accessibility'}
+    NIGHT_WATCH: {title: 'Night Watch', icon: 'bed'},
+    DOOR_TRANSITION: {title: 'Stuck in Transition', icon: 'exclamation'},
+    DOOR_OPEN: {title: 'Door Left Open', icon: 'lock-open'},
+    HOME_ALONE: {title: 'Activated when no ones home', icon: 'house-damage'}
 }
 
 export const STATUS_DEFS = {
-    transition: {title: 'Transition', icon: 'thumbs_up_down'},
-    open: {title: 'Open', icon: 'thumb_up'},
-    closed: {title: 'Closed', icon: 'thumb_down'},
-    unknown: {title: 'Unknown', icon: 'device_unknown'}
+    transition: {title: 'Transition', icon: 'recycle'},
+    open: {title: 'Open', icon: 'door-open'},
+    closed: {title: 'Closed', icon: 'door-closed'},
+    unknown: {title: 'Unknown', icon: 'question'}
 }
 
 export const LOG_DEFS = {
-    STATUS_CHANGE : {title: 'Status Change', icon: 'transfer_within_a_station'},
-    ACTION: {title: 'Action', icon: 'directions_run'},
-    LIGHTS: {title: 'Lights', icon: 'brightness_low'},
-    ALERT: {title: 'Alert', icon: 'notification_important'},
-    ALL: {title: 'All', icon: 'notification_important'}
+    STATUS_CHANGE : {title: 'Status Change', icon: 'exchange-alt'},
+    ACTION: {title: 'Action', icon: 'running'},
+    LIGHTS: {title: 'Lights', icon: 'lightbulb'},
+    ALERT: {title: 'Alert', icon: 'bell'},
+    ALL: {title: 'All', icon: 'bell'}
 }
 
 export const LIGHTS_DEFS = {
-    ON: {title: 'On', icon: 'brightness_low'},
-    OFF: {title: 'Off', icon: 'brightness_high'},
-    on: {title: 'On', icon: 'brightness_low'},
-    off: {title: 'Off', icon: 'brightness_high'}
+    ON: {title: 'On', icon: 'lightbulb'},
+    OFF: {title: 'Off', icon: 'lightbulb'},
+    on: {title: 'On', icon: 'lightbulb'},
+    off: {title: 'Off', icon: 'lightbulb'}
 }
 
 export enum LOG_TYPES {

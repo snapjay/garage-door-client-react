@@ -1,7 +1,8 @@
 import React from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
-import {STATUS_DEFS} from "../enums"
+import {LOG_DEFS, STATUS_DEFS} from "../enums"
+import Icon from "./Icon"
 
 const initialState = {}
 type State = Readonly<typeof initialState>
@@ -22,7 +23,7 @@ class Lights extends React.Component<{}, State> {
         return (
             <Card className='CardStatus'>
                 <div>
-                    <i className="card-img material-icons text-primary pl-3" style={{fontSize: '57px'}}>brightness_medium  </i>
+                    <Icon className='card-img text-primary pl-3 ' name={LOG_DEFS['LIGHTS'].icon} />
                 </div>
                 <div>
                     <Card.Body>
