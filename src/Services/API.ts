@@ -6,26 +6,32 @@ import {
     IStatusResponse,
 } from "../index"
 import io  from 'socket.io-client'
-import {DOOR_STATUS, SOCKET_ALERT, SOCKET_STATUS} from "../enums"
+import {LIGHT_STATUS, SOCKET_ALERT, SOCKET_STATUS} from "../enums"
+
+export enum METHOD {
+    STATUS = 'status',
+    ACTION = 'action',
+    LIGHTS = 'hue',
+}
 
 class API {
-    readonly url: string = 'https://api.door.snapjay.com/'
+    readonly url: string = 'https://api.door.snapjay.com/api/'
     readonly socket = io(this.url)
 
     public getStatus(): Promise<IStatusResponse> {
-        return this.request<IStatusResponse>('api/status')
+        return this.request<IStatusResponse>(METHOD.STATUS)
     }
 
     public activate() {
-        return this.request<IStatusResponse>('api/action')
+        return this.request<IStatusResponse>(METHOD.ACTION)
     }
 
 
     public lights(status: boolean) {
         if (status) {
-            return this.request<IStatusResponse>('api/hue?state=on')
+            return this.request<IStatusResponse>(`${METHOD.LIGHTS}?state=${LIGHT_STATUS.ON}` )
         } else {
-            return this.request<IStatusResponse>('api/hue?state=off')
+            return this.request<IStatusResponse>(`${METHOD.LIGHTS}?state=${LIGHT_STATUS.OFF}` )
         }
     }
 

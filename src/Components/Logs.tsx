@@ -33,9 +33,9 @@ class Logs extends React.Component<{}, State> {
     }
 
     public render() {
-        let showNoAlerts
-        if (!this.state.logs) {
-            showNoAlerts = <div> No logs </div>
+        let showNoLogs
+        if (!this.state.logs.length) {
+            showNoLogs = <div className='mt-4 font-italic font-weight-light text-black-50'> No {LOG_DEFS[this.state.filter].title} logs </div>
         }
         return (
             <Card className='CardAlert'>
@@ -47,7 +47,7 @@ class Logs extends React.Component<{}, State> {
                         }
                     </DropdownButton>
                     <Card.Subtitle className="mb-2 text-muted">
-                        {showNoAlerts}
+                        {showNoLogs}
                         <ListGroup>
                             {
                                 this.state.logs.map((item, index) => <LogItem item={item } key={index}></LogItem>)

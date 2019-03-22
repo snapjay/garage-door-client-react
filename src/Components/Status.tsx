@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
-import {ISocketStatusResponse, IStatusResponse, IStatusState} from "../index"
-import {STATUS_DEFS, DOOR_STATUS, LOG_DEFS} from "../enums"
-import Icon from "./Icon"
+import {ILogItem, ISocketStatusResponse, IStatusResponse, IStatusState} from '../index'
+import {STATUS_DEFS, DOOR_STATUS, LOG_DEFS, LOG_TYPES} from '../enums'
+import Icon from './Icon'
+import Firebase from '../Services/Firebase'
 
 const initialState: IStatusState = {
     status: DOOR_STATUS.UNKNOWN
@@ -17,13 +18,9 @@ class Status extends React.Component<{}, State> {
     readonly state: State = initialState
 
     componentDidMount() {
-        const a = this.api.getStatus().then((rsp: IStatusResponse) => {
-            this.setState({status: rsp.status})
+        Firebase.onStatusUpdate((status: DOOR_STATUS) => {
+            this.setState({ status})
         })
-
-        this.api.subscribeToStatus((err, rsp: ISocketStatusResponse) => this.setState({
-            status: rsp.status
-        }))
     }
 
     protected activate = (): void => {

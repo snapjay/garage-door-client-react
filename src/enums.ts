@@ -9,10 +9,10 @@ export const ALERT_DEFS = {
 }
 
 export const STATUS_DEFS = {
-    transition: {title: 'Transition', icon: 'recycle'},
-    open: {title: 'Open', icon: 'door-open'},
-    closed: {title: 'Closed', icon: 'door-closed'},
-    unknown: {title: 'Unknown', icon: 'question'}
+    TRANSITION: {title: 'Transition', icon: 'random'},
+    OPEN: {title: 'Open', icon: 'door-open'},
+    CLOSED: {title: 'Closed', icon: 'door-closed'},
+    UNKNOWN: {title: 'Unknown', icon: 'question'}
 }
 
 export const LOG_DEFS = {
@@ -25,9 +25,7 @@ export const LOG_DEFS = {
 
 export const LIGHTS_DEFS = {
     ON: {title: 'On', icon: 'lightbulb'},
-    OFF: {title: 'Off', icon: 'lightbulb'},
-    on: {title: 'On', icon: 'lightbulb'},
-    off: {title: 'Off', icon: 'lightbulb'}
+    OFF: {title: 'Off', icon: 'lightbulb'}
 }
 
 export enum LOG_TYPES {
@@ -39,10 +37,15 @@ export enum LOG_TYPES {
 }
 
 export enum DOOR_STATUS {
-    TRANSITION = 'transition',
-    OPEN = 'open',
-    CLOSED = 'closed',
-    UNKNOWN = 'unknown'
+    TRANSITION = 'TRANSITION',
+    OPEN = 'OPEN',
+    CLOSED = 'CLOSED',
+    UNKNOWN = 'UNKNOWN'
+}
+
+export enum LIGHT_STATUS {
+    ON = 'ON',
+    OFF = 'OFF',
 }
 
 export enum ALERT {

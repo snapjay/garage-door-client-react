@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import {LOG_TYPES} from '../enums'
 
 class Firebase {
 
@@ -15,24 +16,20 @@ class Firebase {
     firebase.initializeApp(config)
     this.Database = firebase.database()
     this.Logs = this.Database.ref('logs')
-    this.Alerts = this.Database.ref('alerts')
   }
 
   getLogsRef() {
     return this.Logs
   }
 
-  getAlertsRef() {
-    return this.Alerts
-  }
-
-  onAlertUpdate(callback, count = 5) {
-    this.Alerts.limitToLast(count).on('value', (snapshot) => {
-      let build = []
+  onStatusUpdate(callback) {
+    this.Logs.limitToLast(1).orderByChild("type").equalTo(LOG_TYPES.STATUS_CHANGE).on('value', (snapshot) => {
       let rsp = snapshot.val()
-      Object.keys(rsp).map((key, index) => build.unshift(rsp[key])
-      )
-      callback(build)
+      let status = 'UNKNOWN'
+      if (rsp) {
+        status = rsp[Object.keys(rsp)[0]].value
+      }
+      callback(status)
     })
   }
 
@@ -45,11 +42,11 @@ class Firebase {
     resource = resource.on('value', (snapshot) => {
       let build = []
       let rsp = snapshot.val()
-      Object.keys(rsp).map((key, index) => build.unshift(rsp[key])
-      )
+      if (rsp) {
+        Object.keys(rsp).map((key, index) => build.unshift(rsp[key]))
+      }
       callback(build)
     })
-
   }
 }
 
