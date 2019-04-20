@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {Container, Row, Col, Navbar} from 'react-bootstrap'
-import Status from './Components/Status'
-import Lights from './Components/Lights'
-import Logs from './Components/Logs'
+import { Navbar} from 'react-bootstrap'
+import Home from './Components/Home'
+import Login from './Components/Login'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends Component {
     render() {
@@ -14,26 +14,10 @@ class App extends Component {
                         {'Garage Door'}
                     </Navbar.Brand>
                 </Navbar>
-                <Container fluid={true} >
-                    <Row>
-                        <Col>
-                            <header>
-                                <h2></h2>
-                            </header>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className='mb-4'>
-                            <Status></Status>
-                        </Col>
-                        <Col className='mb-4'>
-                            <Logs></Logs>
-                        </Col>
-                        <Col className='mb-4'>
-                            <Lights></Lights>
-                        </Col>
-                    </Row>
-                </Container>
+                <Router>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/login" exact component={Login} />
+                </Router>
             </div>
         )
     }

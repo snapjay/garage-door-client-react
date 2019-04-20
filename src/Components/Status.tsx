@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
-import {ILogItem, ISocketStatusResponse, IStatusResponse, IStatusState} from '../index'
-import {STATUS_DEFS, DOOR_STATUS, LOG_DEFS, LOG_TYPES} from '../enums'
+import {ILogItem, ISocketStatusResponse, IStatusResponse, IStatusState} from '../types'
+import {STATUS_DEFS, DOOR_STATUS, LOG_DEFS, LOG_TYPES} from '../types/enums'
 import Icon from './Icon'
 import Firebase from '../Services/Firebase'
 

@@ -1,7 +1,7 @@
 import React, {FormEvent, SyntheticEvent} from 'react'
 import {Card, Dropdown, DropdownButton, ListGroup} from 'react-bootstrap'
-import {ILogState, ILogItem} from '../index'
-import {LOG_DEFS, LOG_TYPES} from '../enums'
+import {ILogState, ILogItem} from '../types'
+import {LOG_DEFS, LOG_TYPES} from '../types/enums'
 import Firebase from '../Services/Firebase.js'
 import LogItem from "./LogItem"
 

@@ -1,5 +1,6 @@
 import firebase from 'firebase'
-import {LOG_TYPES} from '../enums'
+import firebaseui from 'firebaseui'
+import {LOG_TYPES} from '../types/enums'
 
 class Firebase {
 
