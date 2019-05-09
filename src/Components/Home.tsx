@@ -4,7 +4,7 @@ import Status from "./Status"
 import Logs from "./Logs"
 import Lights from "./Lights"
 
-class Icon extends React.Component {
+class Home extends React.Component {
     render() {
         return (
             <Container fluid={true} >
@@ -31,4 +31,4 @@ class Icon extends React.Component {
     }
 }
 
-export default Icon
+export default Home

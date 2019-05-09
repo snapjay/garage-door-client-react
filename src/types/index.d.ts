@@ -8,6 +8,15 @@ export interface IStatusResponse {
 export interface IStatusState {
     status: DOOR_STATUS
 }
+export interface IAppState {
+    user?: {
+        displayName?: string,
+        email?: string,
+        photoURL?: string,
+        uid?: string,
+        accessToken?: string
+    }
+}
 
 export interface IAlertItem {
     alert: ALERT,
