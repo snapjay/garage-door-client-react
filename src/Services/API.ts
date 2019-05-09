@@ -4,9 +4,9 @@ import {
     ISocketStatusResponse,
     IStatusCallback,
     IStatusResponse,
-} from "../index"
+} from "../types"
 import io  from 'socket.io-client'
-import {LIGHT_STATUS, SOCKET_ALERT, SOCKET_STATUS} from "../enums"
+import {LIGHT_STATUS, SOCKET_ALERT, SOCKET_STATUS} from "../types/enums"
 
 export enum METHOD {
     STATUS = 'status',

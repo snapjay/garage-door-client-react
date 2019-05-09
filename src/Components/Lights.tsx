@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, Card} from 'react-bootstrap'
 import API from '../Services/API'
-import {LOG_DEFS, STATUS_DEFS} from "../enums"
+import {LOG_DEFS, STATUS_DEFS} from "../types/enums"
 import Icon from "./Icon"
 
 const initialState = {}

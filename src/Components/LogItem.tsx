@@ -1,8 +1,8 @@
 import React from 'react'
 import {ListGroup} from 'react-bootstrap'
-import {ILogItem} from "../index"
+import {ILogItem} from "../types"
 import {dateFormat} from "../Services/Utils"
-import {ALERT_DEFS, LIGHTS_DEFS, LOG_DEFS, LOG_TYPES, STATUS_DEFS} from "../enums"
+import {ALERT_DEFS, LIGHTS_DEFS, LOG_DEFS, LOG_TYPES, STATUS_DEFS} from "../types/enums"
 import Icon from "./Icon"
 
 
