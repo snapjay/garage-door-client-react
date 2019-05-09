@@ -4,18 +4,17 @@ import Home from './Components/Home'
 
 import firebase from 'firebase'
 import firebaseui from 'firebaseui'
-import {IAppState, IStatusState} from "./types"
-import {DOOR_STATUS} from "./types/enums"
+import {IAppState} from "./types"
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 const uiConfig = {
     callbacks: {
-        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-            console.log(authResult)
-            console.log(redirectUrl)
-            return true;
-        },
+        // signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+        //     console.log(authResult)
+        //     console.log(redirectUrl)
+        //     return true;
+        // },
         // uiShown: function() {
         //     document.getElementById('loader').style.display = 'none';
         // }
@@ -79,10 +78,7 @@ class App extends Component<{}, State> {
                     <Navbar.Brand>Garage Door</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto">
-                            {/*<Nav.Link href="#features">Features</Nav.Link>*/}
-                            {/*<Nav.Link href="#pricing">Pricing</Nav.Link>*/}
-                        </Nav>
+                        <Nav className="mr-auto"></Nav>
                         <Nav>
                             {(this.state.user) ? (
                                     <NavDropdown title={this.state.user.displayName} className='mt-2' id="collasible-nav-dropdown">
