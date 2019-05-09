@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Navbar} from 'react-bootstrap'
+import {Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import Home from './Components/Home'
 
 import firebase from 'firebase'
@@ -11,11 +11,11 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 const uiConfig = {
     callbacks: {
-        // signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        //     console.log(authResult)
-        //     console.log(redirectUrl)
-        //     return true;
-        // },
+        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+            console.log(authResult)
+            console.log(redirectUrl)
+            return true;
+        },
         // uiShown: function() {
         //     document.getElementById('loader').style.display = 'none';
         // }
@@ -69,23 +69,35 @@ class App extends Component<{}, State> {
 
     signOut = () => {
         firebase.auth().signOut()
-        this.setState({})
+        this.setState({user: null})
     }
+
     render() {
         return (
             <div>
-                <Navbar bg="primary" variant="dark" expand={true}>
-                    <Navbar.Brand>{'Garage Door'}</Navbar.Brand>
-                    <Navbar.Toggle/>
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
+                <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+                    <Navbar.Brand>Garage Door</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="mr-auto">
+                            {/*<Nav.Link href="#features">Features</Nav.Link>*/}
+                            {/*<Nav.Link href="#pricing">Pricing</Nav.Link>*/}
+                        </Nav>
+                        <Nav>
                             {(this.state.user) ? (
-                                <span onClick={this.signOut}>{this.state.user.displayName} <img src={this.state.user.photoURL}
-                                                                         alt={this.state.user.displayName}
-                                                                         className='border border-dark rounded-circle'
-                                                                         style={{width: '40px'}}/></span>
+                                    <NavDropdown title={this.state.user.displayName} className='mt-2' id="collasible-nav-dropdown">
+                                        <NavDropdown.Item onClick={this.signOut}>Logout</NavDropdown.Item>
+                                    </NavDropdown>
                             ) : ''}
-                        </Navbar.Text>
+                            {(this.state.user) ? (
+                                    <Nav.Link>
+                                        <img src={this.state.user.photoURL}
+                                             alt={this.state.user.displayName}
+                                             className='border border-dark rounded-circle'
+                                             style={{width: '40px', height: '40px'}}/>
+                                    </Nav.Link>
+                            ) : ''}
+                        </Nav>
                     </Navbar.Collapse>
                 </Navbar>
                 {(this.state.user) ? (
