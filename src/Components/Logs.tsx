@@ -1,14 +1,18 @@
 import React, {FormEvent, SyntheticEvent} from 'react'
-import {Card, Dropdown, DropdownButton, ListGroup} from 'react-bootstrap'
+import {Card, Dropdown, DropdownButton, ListGroup, Button } from 'react-bootstrap'
 import {ILogState, ILogItem} from '../types'
 import {LOG_DEFS, LOG_TYPES} from '../types/enums'
 import Firebase from '../Services/Firebase.js'
 import LogItem from "./LogItem"
 
+const DEFAULT_LOG_COUNT = 5
+
 const initialState: ILogState = {
     logs: [],
+    count: DEFAULT_LOG_COUNT,
     filter: LOG_TYPES.ALERT
 }
+
 type State = Readonly<typeof initialState>
 
 class Logs extends React.Component<{}, State> {
@@ -24,12 +28,21 @@ class Logs extends React.Component<{}, State> {
             this.setState({
                 logs: snapshot
             })
-        }, filter)
+        }, filter, this.state.count)
     }
 
     private handleChange = (eventKey:LOG_TYPES): void => {
-        this.setState({filter: eventKey})
-        this.updateLogs(eventKey)
+        this.setState({filter: eventKey, count: DEFAULT_LOG_COUNT}, () => {
+            this.updateLogs(eventKey)
+        })
+    }
+
+    private showMore = (): void => {
+        this.setState((state) => {
+            return {count: state.count + DEFAULT_LOG_COUNT}
+        }, () => {
+            this.updateLogs(this.state.filter)
+        })
     }
 
     public render() {
@@ -40,10 +53,12 @@ class Logs extends React.Component<{}, State> {
         return (
             <Card className='CardAlert'>
                 <Card.Body>
-                    <DropdownButton id='select' className='mb-3' variant='outline-secondary' onSelect={this.handleChange} title={LOG_DEFS[this.state.filter].title} >
+                    <DropdownButton id='select' className='mb-3' variant='outline-secondary' onSelect={this.handleChange} title={LOG_DEFS[this.state.filter].title}>
                         {
                             Object.keys(LOG_TYPES).map(type => (
-                                <Dropdown.Item eventKey={type} key={type}>{LOG_DEFS[type].title}</Dropdown.Item>))
+                                <Dropdown.Item eventKey={type} key={type}>{LOG_DEFS[type].title}</Dropdown.Item>
+                                )
+                            )
                         }
                     </DropdownButton>
                     <Card.Subtitle className="mb-2 text-muted">
@@ -54,6 +69,7 @@ class Logs extends React.Component<{}, State> {
                             }
                         </ListGroup>
                     </Card.Subtitle>
+                    <Button variant="outline-secondary" onClick={this.showMore}>Show More</Button>
                 </Card.Body>
             </Card>
         )

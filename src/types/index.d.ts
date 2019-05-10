@@ -37,6 +37,7 @@ export interface IAlertState {
 }
 export interface ILogState {
     logs: ILogItem[],
+    count: number,
     filter: LOG_TYPES
 }
 
