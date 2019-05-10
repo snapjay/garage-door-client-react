@@ -5,9 +5,11 @@ import {LOG_DEFS, LOG_TYPES} from '../types/enums'
 import Firebase from '../Services/Firebase.js'
 import LogItem from "./LogItem"
 
+const DEFAULT_LOG_COUNT = 5
+
 const initialState: ILogState = {
     logs: [],
-    count: 5,
+    count: DEFAULT_LOG_COUNT,
     filter: LOG_TYPES.ALERT
 }
 
@@ -30,14 +32,14 @@ class Logs extends React.Component<{}, State> {
     }
 
     private handleChange = (eventKey:LOG_TYPES): void => {
-        this.setState({filter: eventKey, count: 5}, () => {
+        this.setState({filter: eventKey, count: DEFAULT_LOG_COUNT}, () => {
             this.updateLogs(eventKey)
         })
     }
 
     private showMore = (): void => {
         this.setState((state) => {
-            return {count: state.count + 5}
+            return {count: state.count + DEFAULT_LOG_COUNT}
         }, () => {
             this.updateLogs(this.state.filter)
         })
