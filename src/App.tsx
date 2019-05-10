@@ -78,7 +78,9 @@ class App extends Component<{}, State> {
                     <Navbar.Brand>Garage Door</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto"></Nav>
+                        <Nav className="mr-auto">
+
+                        </Nav>
                         <Nav>
                             {(this.state.user) ? (
                                     <NavDropdown title={this.state.user.displayName} className='mt-2' id="collasible-nav-dropdown">
