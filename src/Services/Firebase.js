@@ -7,44 +7,45 @@ class Firebase {
     const config = {
       apiKey: "AIzaSyB1Z14N6PLt1Wa7hcM5NjxsfWOHXKLBRxo",
       authDomain: "garage-door-9135e.firebaseapp.com",
-      databaseURL: "https://garage-door-9135e.firebaseio.com",
+      // databaseURL: "https://garage-door-9135e.firebaseio.com",
       projectId: "garage-door-9135e",
-      storageBucket: "",
-      messagingSenderId: "366424174093"
+      // storageBucket: "",
+      // messagingSenderId: "366424174093"
     }
 
     firebase.initializeApp(config)
-    this.Database = firebase.database()
-    this.Logs = this.Database.ref('logs')
+    this.db = firebase.firestore()
+    this.logsCollection = this.db.collection('logs')
   }
 
   getLogsRef() {
-    return this.Logs
+    return this.logsCollection
   }
 
   onStatusUpdate(callback) {
-    this.Logs.limitToLast(1).orderByChild("type").equalTo(LOG_TYPES.STATUS_CHANGE).on('value', (snapshot) => {
-      let rsp = snapshot.val()
+    this.logsCollection.limit(1).orderBy('created', 'desc').where("type", '==', LOG_TYPES.STATUS_CHANGE).onSnapshot((snapshot) => {
       let status = 'UNKNOWN'
-      if (rsp) {
-        status = rsp[Object.keys(rsp)[0]].value
+      if (!snapshot.empty) {
+        snapshot.forEach((doc) => {
+          status = (doc.data()['value'])
+        })
+        callback(status)
       }
-      callback(status)
     })
   }
 
   onLogUpdate(callback, filter = 'ALL', count = 50) {
     // eslint-disable-next-line
-    let resource = this.Logs.limitToLast(count)
+    let resource = this.logsCollection
     if (filter !== 'ALL') {
-      resource = resource.orderByChild("type").equalTo(filter)
+      resource = resource.where("type", '==', filter)
     }
-    resource = resource.on('value', (snapshot) => {
+    resource = resource.limit(count).orderBy('created', 'desc').onSnapshot((snapshot) => {
       let build = []
-      let rsp = snapshot.val()
-      if (rsp) {
-        Object.keys(rsp).map((key, index) => build.unshift(rsp[key]))
-      }
+      snapshot.forEach((doc) => {
+        let row = doc.data()
+        build.push(row)
+      })
       callback(build)
     })
   }

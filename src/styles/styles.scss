@@ -27,6 +27,7 @@ body {
   grid-row-gap: 0;
   justify-items: stretch;
   align-items: flex-start;
+  overflow: hidden;
 }
 
 .CardLights {
@@ -35,14 +36,10 @@ body {
 
 .logicon {
   position: absolute;
-  right: -22px;
-  font-size: 77px;
+  right: -14px;
+  font-size: 62px;
   opacity: 0.1;
 }
 .card-img {
   font-size: 57px
-}
-
-.list-group-item{
-  overflow: hidden;
 }

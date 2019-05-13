@@ -38,7 +38,7 @@ class LogItem extends React.Component<Props> {
                     <Icon className='mr-3 text-primary logicon' name={LOG_DEFS[this.props.item.type].icon} />
                     <div className='text-primary'>{this.getIcon(this.props.item).title}</div>
                     <small className='d-block'>{LOG_DEFS[this.props.item.type].title}</small>
-                    <small>{dateFormat(new Date(this.props.item.date))}</small>
+                    <small>{dateFormat(new Date(this.props.item.created.toDate()))}</small>
                 </div>
             </ListGroup.Item>
         )
