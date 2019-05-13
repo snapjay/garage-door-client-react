@@ -36,7 +36,7 @@ class Status extends React.Component<{}, State> {
                     <div>
                         <Card.Body>
                             <Card.Subtitle className="mb-2 text-muted">Status:</Card.Subtitle>
-                            <div className='h1  text-primary'>{ STATUS_DEFS[this.state.status].title}</div>
+                            <div className='h1 text-primary'>{ STATUS_DEFS[this.state.status].title}</div>
                             <Button variant="outline-secondary" className='mt-3' onClick={this.activate}>Activate</Button>
                         </Card.Body>
                     </div>

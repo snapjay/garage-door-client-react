@@ -20,12 +20,12 @@ export interface IAppState {
 
 export interface IAlertItem {
     alert: ALERT,
-    date: number
+    created: FirebaseFirestore.Timestamp
 }
 export interface ILogItem {
     type: LOG_TYPES,
     value: string | DOOR_STATUS | ALERT,
-    date: number
+    created: FirebaseFirestore.Timestamp
 }
 
 export interface IAlertResponse {
